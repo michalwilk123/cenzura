@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cenzura"
+version = "0.1.0"
+description = "Video text redaction tool - detect and redact sensitive text from videos using OCR"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "opencv-python-headless>=4.13.0.90",
+    "rapidocr-onnxruntime>=1.4.4",
+    "thefuzz>=0.22.1",
+    "tqdm>=4.67.3",
+]
+
+[project.scripts]
+cenzura = "cenzura.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cenzura"]
